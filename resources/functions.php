@@ -106,7 +106,7 @@ function get_products_shop_in_page(){
     $query = query("SELECT * FROM products");
     confirm($query);
     while($row = fetch_array($query)){
-$products = <<<DELIMETER
+    $products = <<<DELIMETER
 
        <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
