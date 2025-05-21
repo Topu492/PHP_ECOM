@@ -25,7 +25,7 @@
                         <a href="#">Checkout</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="contact.php">Contact</a>
                     </li>
 
                 </ul>

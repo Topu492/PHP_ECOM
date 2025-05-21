@@ -165,6 +165,12 @@ function login_user(){
 
 }
 
+function send_message(){
+    if(isset($_POST['submit'])){
+        echo " Work";
+    }
+}
+
 
 
 //******************************************BackEnd Function *********************************/
