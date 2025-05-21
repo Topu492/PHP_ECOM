@@ -7,6 +7,7 @@ require_once("../resources/config.php");?>
 
       <header>
             <h1 class="text-center">Login</h1>
+            <h1 class="text-center bg-warning"><?php display_message();  ?></h1>
         <div class="col-sm-4 col-sm-offset-5">         
             <form class="" action="" method="post" enctype="multipart/form-data">
                 <?php login_user(); ?>
