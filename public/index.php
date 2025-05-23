@@ -19,6 +19,7 @@ require_once("../resources/config.php");?>
                 </div>
 
                 <div class="row">
+                   
                     <?php  get_products()  ?>
 
                 </div>
