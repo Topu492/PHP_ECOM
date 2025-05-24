@@ -1,7 +1,8 @@
 <?php
 require_once("../resources/config.php");?>
+<?php require_once("cart.php");?>
 <?php  include(Template_frontend . DS . "header.php") ?>
-<?php  echo $_SESSION['product_1'];  ?>
+<?php // echo $_SESSION['product_1'];  ?>
 
 
 <!-- Page Content -->
@@ -26,13 +27,7 @@ require_once("../resources/config.php");?>
           </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>apple</td>
-                <td>$23</td>
-                <td>3</td>
-                <td>2</td>
-              
-            </tr>
+           <?php cart(); ?>
         </tbody>
     </table>
 </form>
