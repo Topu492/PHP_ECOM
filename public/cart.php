@@ -4,7 +4,7 @@
 
 if(isset($_GET['id'])){
     
-    $query = query("SELECT * FROM products WHERE product_id=" . escape_string($_GET['id']). "");
+    $query = query("SELECT * FROM products WHERE product_id=" . escape_string($_GET['id']). " ");
     confirm($query);
 
     while($row = fetch_array($query)){
@@ -37,10 +37,16 @@ if(isset($_GET['delete'])){
       redirect("chackout.php");
     }
 
+function cart(){
 
-    function cart(){
-        $query = query("SELECT * FROM products");
-        confirm($query);
+foreach($_SESSION as $name => $value){
+
+if($value > 0){
+if(substr($name, 0, 8) == "product_"){
+$length = strlen($name - 8);
+$id = substr($name , 8 , $length);
+$query = query("SELECT * FROM products WHERE product_id = " . escape_string($id) . " ");
+confirm($query);
 
 while($row = fetch_array($query)){
 $product =<<<DELIMETER
@@ -59,9 +65,13 @@ $product =<<<DELIMETER
             </tr>
 
 DELIMETER;   
-echo $product;         
-        }
-    }
+echo $product;
+       }         
+   }
+  }
+ }
+}
+        
 
 
 ?>
