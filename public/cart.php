@@ -43,19 +43,20 @@ foreach($_SESSION as $name => $value){
 
 if($value > 0){
 if(substr($name, 0, 8) == "product_"){
-$length = strlen($name - 8);
-$id = substr($name , 8 , $length);
+
+$id = substr($name , 8);
 $query = query("SELECT * FROM products WHERE product_id = " . escape_string($id) . " ");
 confirm($query);
 
 while($row = fetch_array($query)){
-$product =<<<DELIMETER
+ $sub = $row['product_price'] * $value;   
+$product = <<<DELIMETER
 
  <tr>
                 <td>{$row['product_title']}</td>
-                <td>$23</td>
-                <td>3</td>
-                <td>2</td>
+                <td>&#36;{$row['product_price']}</td>
+                <td>{$value}</td>
+                <td>&#36;{$sub}</td>
                 <td>
                 <a class='btn btn-warning' href="cart.php?remove={$row['product_id']}"><span class='glyphicon glyphicon-minus'></span></a> 
                 <a class='btn btn-success' href="cart.php?add={$row['product_id']}"><span class='glyphicon glyphicon-plus'></span></a>
@@ -67,10 +68,12 @@ $product =<<<DELIMETER
 DELIMETER;   
 echo $product;
        }         
+     }
+    }
+
    }
-  }
  }
-}
+
         
 
 
