@@ -52,7 +52,11 @@ require_once("../resources/config.php");?>
 
 <tr class="order-total">
 <th>Order Total</th>
-<td><strong><span class="amount">$3444</span></strong> </td>
+<td><strong><span class="amount">&#36;
+    <?php 
+   echo isset($_SESSION['item_total']) ? $_SESSION['item_total'] : "";
+     ?>
+</span></strong> </td>
 </tr>
 
 
