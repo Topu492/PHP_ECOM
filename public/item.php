@@ -54,7 +54,8 @@
    
     <form action="">
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="ADD TO CART">
+            <!-- <input type="submit" class="btn btn-primary" value="ADD TO CART">  -->
+             <a href="cart.php" class="btn btn-primary"></a>
         </div>
     </form>
 
