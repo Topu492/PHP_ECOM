@@ -1,4 +1,4 @@
-<?php  require_once('../../resources/config.php')    ?>
+<?php  require_once("../../resources/config.php")    ?>
 <?php include(Template_backend . DS . "header.php") ?>
         <div id="page-wrapper">
 
@@ -18,6 +18,19 @@
                     </div>
                 </div>
                 <!-- /.row -->
+
+                <?php
+
+                    if($_SERVER['REQUEST_URI'] == "PHP_ECOM/public/admin/" || $_SERVER['REQUEST_URI'] == "PHP_ECOM/public/admin/index.php"){
+                        include((Template_backend . DS . "/admin_content.php"));
+                    }
+
+                    if(isset($_GET['orders'])){
+                         include((Template_backend . DS . "/orders.php"));
+                    }
+
+
+                   ?>
 
 
             </div>
