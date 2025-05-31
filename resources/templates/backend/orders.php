@@ -1,7 +1,4 @@
 
-<?php  require_once("../../resources/config.php")    ?>
-<?php include(Template_backend . DS . "header.php") ?>
-
 <div class="col-md-12">
 <div class="row">
 <h1 class="page-header">
@@ -40,4 +37,3 @@
 </div>
 
 
-<?php include(Template_backend . DS . "footer.php") ?>
