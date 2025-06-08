@@ -9,13 +9,13 @@ require_once("../resources/config.php");?>
             <h1 class="text-center">Login</h1>
             <h1 class="text-center bg-warning"><?php display_message();  ?></h1>
         <div class="col-sm-4 col-sm-offset-5">         
-            <form class="" action="" method="post" enctype="multipart/form-data">
+            <form  action="" method="post" enctype="multipart/form-data">
                 <?php login_user() ?>
                 <div class="form-group"><label for="">
                     username<input type="text" name="username" class="form-control"></label>
                 </div>
                  <div class="form-group"><label for="password">
-                    Password<input type="text" name="password" class="form-control"></label>
+                    Password<input type="password" name="password" class="form-control"></label>
                 </div>
 
                 <div class="form-group">
@@ -26,7 +26,5 @@ require_once("../resources/config.php");?>
 
 
     </header>
-
-
-        </div>
+</div>
 <?php  include(Template_frontend . DS . "footer.php") ?>

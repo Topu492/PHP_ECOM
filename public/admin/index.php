@@ -1,6 +1,15 @@
 <?php  require_once("../../resources/config.php")    ?>
 <?php include(Template_backend . DS . "header.php") ?>
 
+<?php
+if(!isset($_SESSION['username'])){
+    redirect("../../public");
+}
+
+
+
+?>
+
         <div id="page-wrapper">
 
             <div class="container-fluid">
