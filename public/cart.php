@@ -46,6 +46,10 @@ if(isset($_GET['delete'])){
 function cart(){
  $total = 0;
  $item_quantity = 0;
+ //$item_name = 1;
+ //$item_number = 1;
+ //$amount = 1;
+ //$quantity = 1;
 foreach($_SESSION as $name => $value){
 
 if($value > 0){
@@ -76,9 +80,46 @@ $product = <<<DELIMETER
 
 DELIMETER;   
 echo $product;
+
+//$item_name++; 
+ //$item_number++;
+ //$amount++;
+ //$quantity++;
        }   
        $_SESSION['item_total'] = $total += $sub;       
        $_SESSION['item_quantity'] = $item_quantity;       
+     }
+    }
+
+   }
+ }
+
+
+
+ function report(){
+ $total = 0;
+ $item_quantity = 0;
+foreach($_SESSION as $name => $value){
+
+if($value > 0){
+if(substr($name, 0, 8) == "product_"){
+
+$id = substr($name , 8);
+$query = query("SELECT * FROM products WHERE product_id = " . escape_string($id) . " ");
+confirm($query);
+
+while($row = fetch_array($query)){
+ $product_price = $row['product_price'];
+ //$product_quantity = $row['product_quantity'];
+ $sub = $row['product_price'] * $value;
+ $item_quantity +=$value;
+ $insert_report = query("INSERT INTO REPORTS (product_id,product_price,product_quantity) VALUES('{$id}','{$product_price}','{$value}')");
+confirm($insert_report);
+
+
+       }   
+$total += $sub;       
+$item_quantity;       
      }
     }
 
@@ -89,3 +130,6 @@ echo $product;
 
 
 ?>
+
+
+

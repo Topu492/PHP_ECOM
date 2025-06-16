@@ -1,9 +1,5 @@
-
 <!-- Configuration-->
-
 <?php require_once("../resources/config.php"); ?>
-
-
 <!-- Header-->
 <?php  include(Template_frontend . DS . "header.php") ?>
 
