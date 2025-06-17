@@ -120,10 +120,10 @@ confirm($query);
 
 while($row = fetch_array($query)){
  $product_price = $row['product_price'];
- //$product_quantity = $row['product_quantity'];
+ $product_title = $row['product_title'];
  $sub = $row['product_price'] * $value;
  $item_quantity +=$value;
- $insert_report = query("INSERT INTO REPORTS (product_id,order_id,product_price,product_quantity) VALUES('{$id}','{$last_id}','{$product_price}','{$value}')");
+ $insert_report = query("INSERT INTO REPORTS (product_id,order_id,product_title,product_price,product_quantity) VALUES('{$id}','{$last_id}','{$product_title}','{$product_price}','{$value}')");
 confirm($insert_report);
 
 
