@@ -97,6 +97,16 @@ echo $product;
 
 
  function report(){
+
+if(isset($_GET['tx'])){
+ $amount = $_GET['amt'];
+ $currency = $_GET['cc'];
+ $transaction = $_GET['tx'];
+$status = $_GET['st'];
+$query = query("INSERT INTO ORDERS (order_amount,order_transaction,order_status,order_currency) VALUES('{$amount}','{$currency}','{$transaction}','{$status}')");
+confirm($query);
+$last_id = last_id();
+
  $total = 0;
  $item_quantity = 0;
 foreach($_SESSION as $name => $value){
@@ -113,7 +123,7 @@ while($row = fetch_array($query)){
  //$product_quantity = $row['product_quantity'];
  $sub = $row['product_price'] * $value;
  $item_quantity +=$value;
- $insert_report = query("INSERT INTO REPORTS (product_id,product_price,product_quantity) VALUES('{$id}','{$product_price}','{$value}')");
+ $insert_report = query("INSERT INTO REPORTS (product_id,order_id,product_price,product_quantity) VALUES('{$id}','{$last_id}','{$product_price}','{$value}')");
 confirm($insert_report);
 
 
@@ -122,7 +132,12 @@ $total += $sub;
 $item_quantity;       
      }
     }
+}
 
+   }
+    // session_destroy();
+   else{
+    redirect('index.php');
    }
  }
 

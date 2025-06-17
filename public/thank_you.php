@@ -3,20 +3,19 @@
 
 
 <?php
-if(isset($_GET['tx'])){
-    $amount = $_GET['amt'];
-    $currency = $_GET['cc'];
-    $transaction = $_GET['tx'];
-    $status = $_GET['st'];
 
-    $query = query("INSERT INTO ORDERS (order_amount,order_transaction,order_status,order_currency) VALUES('{$amount}','{$currency}','{$transaction}','{$status}')");
-    confirm($query);
 
    report();
 
-   // session_destroy();
-}
-
+  
 
 
 ?>
+<!-- Page Content   --->
+<div class="container">
+    <h1 class="text-center">Thank You</h1>
+</div>
+
+
+
+<?php  include(Template_frontend . DS . "footer.php") ?>
