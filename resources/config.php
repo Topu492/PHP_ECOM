@@ -8,6 +8,8 @@ defined("DS") ? null : define("DS",DIRECTORY_SEPARATOR);
 
 defined("Template_frontend") ? null : define("Template_frontend", __DIR__ . DS . "templates/frontend");
 defined("Template_backend") ? null : define("Template_backend", __DIR__ . DS . "templates/backend");
+defined("upload_directory") ? null : define("upload_directory", __DIR__ . DS . "uploads");
+//echo __DIR__;
 //echo __DIR__;
 
 defined("DB_HOST") ? null : define("DB_HOST","localhost");

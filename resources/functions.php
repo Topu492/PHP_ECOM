@@ -228,4 +228,24 @@ DELIMETER;
  }
 
 
+ //************************* Add Admin Product  */
+
+ function add_product(){
+
+    if(isset($_POST['publish'])){
+        $product_title = escape_string($_POST['product_title']);
+        $product_category_id = escape_string($_POST['product_category_id']);
+        $product_price = escape_string($_POST['product_price']);
+        $product_description = escape_string($_POST['product_description']);
+        $product_des = escape_string($_POST['product_des']);
+        $product_quantity = escape_string($_POST['product_quantity']);
+        $product_image = escape_string($_FILES['file'] ['name']);
+        $image_tmp_location = escape_string($_FILES['file'] ['tmp_name']);
+
+        move_uploaded_file($image_tmp_location , upload_directory . DS . $product_image);
+
+    }
+ }
+
+
 ?>
