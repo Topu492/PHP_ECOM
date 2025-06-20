@@ -4,7 +4,7 @@
    Add Product
 </h1>
 </div>
-               
+<?php add_product(); ?>        
 <form action="" method="post" enctype="multipart/form-data">
 <div class="col-md-8">
 <div class="form-group">
@@ -22,6 +22,11 @@
         <input type="number" name="product_price" class="form-control" size="60">
       </div>
     </div>
+
+    <div class="form-group">
+           <label for="product-title">Product Short Description</label>
+      <textarea name="product_des" id="" cols="30" rows="3" class="form-control"></textarea>
+    </div>
 </div><!--Main Content-->
 <!-- SIDEBAR-->
 <aside id="admin_sidebar" class="col-md-4">
@@ -33,26 +38,23 @@
      <!-- Product Categories-->
     <div class="form-group">
          <label for="product-title">Product Category</label>
-          <hr>
-        <select name="product_category" id="" class="form-control">
+        <select name="product_category_id" id="" class="form-control">
             <option value="">Select Category</option>      
         </select>
 </div>
     <!-- Product Brands-->
     <div class="form-group">
-      <label for="product-title">Product Brand</label>
-         <select name="product_brand" id="" class="form-control">
-            <option value="">Select Brand</option>
-         </select>
+      <label for="product-title">Product Quantity</label>
+        <input type="text" name="product_quantity"  class="form-control">
     </div>
 
 <!-- Product Tags -->
-
+<!-- 
     <div class="form-group">
           <label for="product-title">Product Keywords</label>
           <hr>
         <input type="text" name="product_tags" class="form-control">
-    </div>
+    </div> -->
     <!-- Product Image -->
     <div class="form-group">
         <label for="product-title">Product Image</label>

@@ -233,17 +233,30 @@ DELIMETER;
  function add_product(){
 
     if(isset($_POST['publish'])){
+       // var_dump($_POST);
         $product_title = escape_string($_POST['product_title']);
         $product_category_id = escape_string($_POST['product_category_id']);
         $product_price = escape_string($_POST['product_price']);
         $product_description = escape_string($_POST['product_description']);
         $product_des = escape_string($_POST['product_des']);
         $product_quantity = escape_string($_POST['product_quantity']);
-        $product_image = escape_string($_FILES['file'] ['name']);
-        $image_tmp_location = escape_string($_FILES['file'] ['tmp_name']);
+        $product_image = ($_FILES['file'] ['name']);
+        $image_tmp_location = ($_FILES['file'] ['tmp_name']);
 
-        move_uploaded_file($image_tmp_location , upload_directory . DS . $product_image);
+       if (move_uploaded_file($image_tmp_location, upload_directory . DS . $product_image)) {
+          echo "Upload successful!";
+        } else {
+           echo "Upload failed!";
+           print_r(error_get_last());
 
+        }
+
+        $query = query("INSERT INTO products (product_title,product_category_id,product_price,product_description,product_des,product_quantity,product_image) 
+        VALUES('{$product_title}','{$product_category_id}','{$product_price}','{$product_description}','{$product_des}','{$product_quantity}','{$product_image}')");
+        $last_id = last_id();
+        confirm($query);
+        set_message("New product with id {$last_id} was added ");
+        redirect('index.php?products');
     }
  }
 
