@@ -8,8 +8,9 @@
     <thead>
 
       <tr>
-           <th>Id</th>
-           <th>Title</th>
+           <th>ID</th>
+           <th>Image</th>
+           <th>Title</th></th>
            <th>Category</th>
            <th>Price</th>
            <th>Quantity</th>

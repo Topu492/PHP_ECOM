@@ -4,6 +4,8 @@
 
 // helper functions
 
+$uploads = "uploads";
+
 function last_id(){
     global $connection;
     return mysqli_insert_id($connection);
@@ -65,11 +67,12 @@ function get_products(){
     $query = query("SELECT * FROM products");
     confirm($query);
     while($row = fetch_array($query)){
+$product_image = display_image($row['product_image']);
 $products = <<<DELIMETER
 
         <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                           <a href="item.php?id={$row['product_id']}"> </a> <img src="{$row['product_image']}" alt=""> </a>
+                           <a href="item.php?id={$row['product_id']}"><img  src="../resources/{$product_image}" alt=""> </a>
                             <div class="caption">
                                 <h4 class="pull-right">&#36;{$row['product_price']}</h4>
                                 <h4><a href="item.php?id={$row['product_id']}">{$row['product_title']}</a>
@@ -203,18 +206,34 @@ function send_message(){
 
 //****************************** Admin Products ******************************************/
 
- function get_products_in_admin(){
+function display_image($picture){
+    global $uploads;
+    return $uploads . DS . $picture;
+}
+ 
+function show_product_category_title($product_category_id){
+    $category = query("SELECT * FROM categories WHERE id = '{$product_category_id}'");
+    confirm($category);
+    while($row = fetch_array($category)){
+   return $row['cat_title'];
+    }
+}
+
+
+
+function get_products_in_admin(){
 
     $query = query("SELECT * FROM products");
     confirm($query);
     while($row = fetch_array($query)){
+     $category = show_product_category_title($row['product_category_id']);
+    $product_image = display_image($row['product_image']);
     $products = <<<DELIMETER
        <tr>
             <td>{$row['product_id']}</td>
-            <td>{$row['product_title']}<br>
-            <a href="index.php?edit_product&id={$row['product_title']}"><img src="{$row['product_image']}" alt=""></a>
-            </td>
-            <td>Category</td>
+            <td> <a href="index.php?edit_product&id={$row['product_title']}"><img width="100" src="../../resources/$product_image" alt=""></a></td>
+            <td>{$row['product_title']}<br></td>
+            <td>{$category}</td>
             <td>{$row['product_price']}</td>
             <td>{$row['product_quantity']}</td>
             <td><a class="btn btn-danger" href="../../resources/templates/backend/delete_product.php?id={$row['product_id']}"><span class='glyphicon glyphicon-remove'></span></a></td>
@@ -259,6 +278,19 @@ DELIMETER;
         redirect('index.php?products');
     }
  }
+
+  function show_categories_add_product_page(){
+$query = query("SELECT * FROM categories");
+confirm($query);
+while($row = fetch_array($query)){
+$categories = <<<DELIMETER
+ <option value="{$row['id']}">{$row['cat_title']}</option>      
+DELIMETER;   
+echo $categories;  
+
+ }
+
+}
 
 
 ?>

@@ -39,13 +39,14 @@
     <div class="form-group">
          <label for="product-title">Product Category</label>
         <select name="product_category_id" id="" class="form-control">
-            <option value="">Select Category</option>      
+          <option value="">Select Category</option>
+           <?php show_categories_add_product_page();  ?>
         </select>
 </div>
     <!-- Product Brands-->
     <div class="form-group">
       <label for="product-title">Product Quantity</label>
-        <input type="text" name="product_quantity"  class="form-control">
+        <input type="number" name="product_quantity"  class="form-control">
     </div>
 
 <!-- Product Tags -->
