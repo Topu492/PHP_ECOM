@@ -110,16 +110,17 @@ function get_products_cat_in_page(){
     $query = query("SELECT * FROM products WHERE product_category_id = " . escape_string($_GET['id']) . " ");
     confirm($query);
     while($row = fetch_array($query)){
-$products = <<<DELIMETER
+    $product_image = display_image($row['product_image']);
+    $products = <<<DELIMETER
 
        <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
-                    <img src="{$row['product_image']}" alt="">
+                    <img src="../resources/{$product_image}" alt="">
                     <div class="caption">
                         <h3>{$row['product_title']}</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
+                            <a href="../public/cart.php?add={$row['product_id']}" class="btn btn-primary">Buy Now!</a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
                         </p>
                     </div>
                 </div>
@@ -135,16 +136,17 @@ function get_products_shop_in_page(){
     $query = query("SELECT * FROM products");
     confirm($query);
     while($row = fetch_array($query)){
+    $product_image = display_image($row['product_image']);
     $products = <<<DELIMETER
 
        <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
-                    <img src="{$row['product_image']}" alt="">
+                    <img src="../resources/{$product_image}" alt="">
                     <div class="caption">
                         <h3>{$row['product_title']}</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
+                            <a href="../public/cart.php?add={$row['product_id']}" class="btn btn-primary">Buy Now!</a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
                         </p>
                     </div>
                 </div>
@@ -226,12 +228,12 @@ function get_products_in_admin(){
     $query = query("SELECT * FROM products");
     confirm($query);
     while($row = fetch_array($query)){
-     $category = show_product_category_title($row['product_category_id']);
+    $category = show_product_category_title($row['product_category_id']);
     $product_image = display_image($row['product_image']);
     $products = <<<DELIMETER
        <tr>
             <td>{$row['product_id']}</td>
-            <td> <a href="index.php?edit_product&id={$row['product_title']}"><img width="100" src="../../resources/$product_image" alt=""></a></td>
+            <td> <a href="index.php?edit_product&id={$row['product_id']}"><img width="100" src="../../resources/$product_image" alt=""></a></td>
             <td>{$row['product_title']}<br></td>
             <td>{$category}</td>
             <td>{$row['product_price']}</td>

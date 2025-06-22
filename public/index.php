@@ -1,10 +1,10 @@
 <?php
 require_once("../resources/config.php");?>
 <?php  include(Template_frontend . DS . "header.php") ?>
-
-    <!-- Page Content -->
+ <!-- Page Content -->
     <div class="container">
 
+    
         <div class="row">
 
         <?php  include(Template_frontend . DS . "side_nav.php") ?>

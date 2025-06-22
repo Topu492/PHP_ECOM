@@ -50,7 +50,8 @@ if(!isset($_SESSION['username'])){
                     if(isset($_GET['add_products'])){
                          include((Template_backend . DS . "/add_products.php"));
                     }
-
+                   if (isset($_GET['edit_product']) && isset($_GET['id'])) {
+                    include(Template_backend . DS . "/edit_product.php"); }
 
                    ?>
 
