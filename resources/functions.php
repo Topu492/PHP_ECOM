@@ -294,5 +294,48 @@ echo $categories;
 
 }
 
+/* Product Update Code  */
+
+function update_product(){
+
+    if(isset($_POST['update'])){
+       // var_dump($_POST);
+        $product_title = escape_string($_POST['product_title']);
+        $product_category_id = escape_string($_POST['product_category_id']);
+        $product_price = escape_string($_POST['product_price']);
+        $product_description = escape_string($_POST['product_description']);
+        $product_des = escape_string($_POST['product_des']);
+        $product_quantity = escape_string($_POST['product_quantity']);
+        $product_image = ($_FILES['file'] ['name']);
+        $image_tmp_location = ($_FILES['file'] ['tmp_name']);
+
+        if(empty($product_image)){
+            $get_pic = query("SELECT product_image FROM products WHERE product_id =" .escape_string($_GET['id']). " ");
+            confirm($get_pic);
+
+            while($pic = fetch_array($get_pic)){
+                $product_image = $pic['product_image'];
+            }
+        }
+
+       move_uploaded_file($image_tmp_location, upload_directory . DS . $product_image);
+   
+        $query = "UPDATE products SET ";
+        $query .= "product_title         = '{$product_title}'       , ";
+        $query .= "product_category_id   = '{$product_category_id}' , ";
+        $query .= "product_price         = '{$product_price}'       , ";
+        $query .= "product_description   = '{$product_description}' , ";
+        $query .= "product_des           = '{$product_des}'         , ";
+        $query .= "product_quantity      = '{$product_quantity}'    , ";
+        $query .= "product_image         = '{$product_image}'        ";
+        $query .= "WHERE product_id      =" . escape_string($_GET['id'])      ; 
+        $send_update_query = query($query);
+        confirm($send_update_query);  
+        set_message("Product has been updated");
+        redirect('index.php?products');
+    }
+ }
+
+
 
 ?>
