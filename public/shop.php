@@ -1,27 +1,27 @@
 <?php
-require_once("../resources/config.php");?>
-<?php  include(Template_frontend . DS . "header.php") ?>
+require_once("../resources/config.php"); ?>
+<?php include(Template_frontend . DS . "header.php") ?>
 
-    <!-- Page Content -->
-    <div class="container">
+<!-- Page Content -->
+<div class="container">
 
-        <!-- Jumbotron Header -->
-        <header>
-          <h1>Shop</h1> 
-        </header>
+  <!-- Jumbotron Header -->
+  <header>
+    <h1>Shop</h1>
+  </header>
 
-        <hr>
+  <hr>
 
-        <!-- Page Features -->
-        <div class="row text-center">
-           
-        <?php  get_products_shop_in_page()  ?>    
-        
-        </div>
-        <!-- /.row -->
+  <!-- Page Features -->
+  <div class="row text-center">
+
+    <?php get_products_shop_in_page()  ?>
+
+  </div>
+  <!-- /.row -->
 
 
-    </div>
-    <!-- /.container -->
+</div>
+<!-- /.container -->
 
-<?php  include(Template_frontend . DS . "footer.php") ?>
+<?php include(Template_frontend . DS . "footer.php") ?>

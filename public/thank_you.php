@@ -1,13 +1,13 @@
 <?php require_once("../resources/config.php"); ?>
-<?php  include(Template_frontend . DS . "header.php") ?>
+<?php include(Template_frontend . DS . "header.php") ?>
 
 
 <?php
 
 
-   report();
+report();
 
-  
+
 
 
 ?>
@@ -18,4 +18,4 @@
 
 
 
-<?php  include(Template_frontend . DS . "footer.php") ?>
+<?php include(Template_frontend . DS . "footer.php") ?>

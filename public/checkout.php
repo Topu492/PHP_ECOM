@@ -1,82 +1,82 @@
 <?php
-require_once("../resources/config.php");?>
-<?php require_once("cart.php");?>
-<?php  include(Template_frontend . DS . "header.php") ?>
-<?php // echo $_SESSION['product_1'];  ?>
+require_once("../resources/config.php"); ?>
+<?php require_once("cart.php"); ?>
+<?php include(Template_frontend . DS . "header.php") ?>
+<?php // echo $_SESSION['product_1'];  
+?>
 
 
 <!-- Page Content -->
-    <div class="container">
+<div class="container">
 
 
-<!-- /.row --> 
+  <!-- /.row -->
 
-<div class="row">
- <h4 class="text-center bg-danger"> <?php display_message(); ?></h4>
-      <h1>Checkout</h1>
+  <div class="row">
+    <h4 class="text-center bg-danger"> <?php display_message(); ?></h4>
+    <h1>Checkout</h1>
 
-<form action="">
-    <table class="table table-striped">
+    <form action="">
+      <table class="table table-striped">
         <thead>
           <tr>
-           <th>Product</th>
-           <th>Price</th>
-           <th>Quantity</th>
-           <th>Sub-total</th>
-     
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Sub-total</th>
+
           </tr>
         </thead>
         <tbody>
-           <?php cart(); ?>
+          <?php cart(); ?>
         </tbody>
-    </table>
-</form>
+      </table>
+    </form>
 
 
 
-<!--  ***********CART TOTALS*************-->
-            
-<div class="col-xs-4 pull-right ">
-<h2>Cart Totals</h2>
+    <!--  ***********CART TOTALS*************-->
 
-<table class="table table-bordered" cellspacing="0">
+    <div class="col-xs-4 pull-right ">
+      <h2>Cart Totals</h2>
 
-<tr class="cart-subtotal">
-<th>Items:</th>
-<td><span class="amount"><?php 
-   echo isset($_SESSION['item_quantity']) ? $_SESSION['item_quantity'] : "0";
-     ?></span></td>
-</tr>
-<tr class="shipping">
-<th>Shipping and Handling</th>
-<td>Free Shipping</td>
-</tr>
+      <table class="table table-bordered" cellspacing="0">
 
-<tr class="order-total">
-<th>Order Total</th>
-<td><strong><span class="amount">&#36;
-    <?php 
-   echo isset($_SESSION['item_total']) ? $_SESSION['item_total'] : "0";
-     ?>
-</span></strong> </td>
-</tr>
+        <tr class="cart-subtotal">
+          <th>Items:</th>
+          <td><span class="amount"><?php
+                                    echo isset($_SESSION['item_quantity']) ? $_SESSION['item_quantity'] : "0";
+                                    ?></span></td>
+        </tr>
+        <tr class="shipping">
+          <th>Shipping and Handling</th>
+          <td>Free Shipping</td>
+        </tr>
 
-
-</tbody>
-
-</table>
-
-</div><!-- CART TOTALS-->
+        <tr class="order-total">
+          <th>Order Total</th>
+          <td><strong><span class="amount">&#36;
+                <?php
+                echo isset($_SESSION['item_total']) ? $_SESSION['item_total'] : "0";
+                ?>
+              </span></strong> </td>
+        </tr>
 
 
- </div><!--Main Content-->
+        </tbody>
+
+      </table>
+
+    </div><!-- CART TOTALS-->
 
 
-           <hr>
+  </div><!--Main Content-->
 
 
-    </div>
-    <!-- /.container -->
+  <hr>
+
+
+</div>
+<!-- /.container -->
 
 <?php include(Template_frontend . DS . "footer.php") ?>
-
