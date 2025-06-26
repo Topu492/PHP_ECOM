@@ -60,8 +60,11 @@ if (!isset($_SESSION['username'])) {
         if (isset($_GET['add_user'])) {
             include((Template_backend . DS . "/add_user.php"));
         }
-         if (isset($_GET['edit_user'])) {
+        if (isset($_GET['edit_user'])) {
             include((Template_backend . DS . "/edit_user.php"));
+        }
+        if (isset($_GET['slides'])) {
+            include((Template_backend . DS . "/slides.php"));
         }
 
         ?>

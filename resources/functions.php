@@ -419,3 +419,58 @@ function add_user()
         redirect('index.php?users');
     }
 }
+
+/**********************Slides ********************/
+
+
+function get_slides()
+{
+    $query = query("SELECT * FROM slides");
+    confirm($query);
+    while ($row = fetch_array($query)) {
+        $slides = <<<DELIMETER
+         <div class="item">
+         <img class="slide-image" src="../resources/uploads/{$row['slide_image']}" alt="">
+        </div>
+ DELIMETER;
+
+        echo $slides;
+    }
+}
+
+function get_active_slide()
+{
+    $query = query("SELECT * FROM slides ORDER BY slide_id DESC LIMIT 1");
+    confirm($query);
+    while ($row = fetch_array($query)) {
+        $slides = <<<DELIMETER
+         <div class="item active">
+         <img  class="slide_image" src="../resources/uploads/{$row['slide_image']}" alt="">
+        </div>
+ DELIMETER;
+
+        echo $slides;
+    }
+}
+
+
+function add_slides()
+{
+    if (isset($_POST['add_slide'])) {
+        $slide_title = escape_string($_POST['slide_title']);
+        $slide_image = ($_FILES['file']['name']);
+        $image_tmp_location = ($_FILES['file']['tmp_name']);
+
+        if (empty($slide_title) || empty($slide_image)) {
+            echo "<p class='bg-danger'>This field cannot be empty</p>";
+        }
+
+        else{
+              move_uploaded_file($image_tmp_location, upload_directory . DS . $slide_image);
+              $query = query("INSERT INTO slides (slide_title,Slide_image)VALUES('{$slide_title}','{$slide_image}')");
+        confirm($query);
+        set_message("Slide added ");
+        redirect('index.php?slides');
+        }
+    }
+}

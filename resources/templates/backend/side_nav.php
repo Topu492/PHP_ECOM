@@ -19,6 +19,9 @@
         <li class="">
             <a href="index.php?orders"><i class="fa fa-fw fa-dashboard"></i>Orders</a>
         </li>
+         <li class="">
+            <a href="index.php?slides"><i class="fa fa-fw fa-dashboard"></i>Slides</a>
+        </li>
 
     </ul>
 </div>
