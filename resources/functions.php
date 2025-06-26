@@ -378,3 +378,44 @@ function add_category()
         }
     }
 }
+
+/*************Users****************/
+
+function show_users()
+{
+    $query = "SELECT * FROM users";
+    $user_query = query($query);
+    confirm($user_query);
+
+    while ($row = fetch_array($user_query)) {
+        $user_id = $row['user_id'];
+        $username = $row['username'];
+        $email = $row['email'];
+        $password = $row['password'];
+        $user = <<<DELIMETER
+        <tr>
+                <td>{$user_id}</td>
+                <td>{$username}</td>
+                <td>{$email}</td>
+                <td><a class="btn btn-danger" href="../../resources/templates/backend/delete_users.php?id={$row['user_id']}"><span class='glyphicon glyphicon-remove'></span></a></td>
+            </tr>
+
+DELIMETER;
+        echo $user;
+    }
+}
+
+function add_user()
+{
+
+    if (isset($_POST['add_user'])) {
+        // var_dump($_POST);
+        $username = escape_string($_POST['username']);
+        $email = escape_string($_POST['email']);
+        $password = escape_string($_POST['password']);
+        $query = query("INSERT INTO users (username,email,password)VALUES('{$username}','{$email}','{$password}')");
+        confirm($query);
+        set_message("New User added ");
+        redirect('index.php?users');
+    }
+}
